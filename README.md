@@ -1,2 +1,2 @@
 # cpp-essentialTraining
-this 
+this a repo about my training in cpp
