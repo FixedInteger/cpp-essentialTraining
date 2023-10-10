@@ -3,6 +3,7 @@
 #include <iomanip> 
 #include <limits>
 #include <string>
+std::string ft_cin() ;
 class contact{
 	private:
 	std::string _name;
@@ -78,7 +79,7 @@ int isalpha_s(std::string str)
 {
 	for(int i = 0; i < str.length(); i++)
 	{
-		if(!isalpha(str[i]))
+		if(!isalpha(str[i]) || isspace(str[i]) )
 			return 0;
 	}
 	return 1;
@@ -87,18 +88,17 @@ void parse_name(std::string name , std:: string parameter)
 {
 	while(1)
 	{
-		if(name.empty() || isalpha_s(name) == 0)
+		if(name.empty() || isalpha_s(name) == 0 )
 		{
 			std::cout << parameter <<" is invalid" << std::endl;
-			std::cin.clear();
-        	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Enter " << parameter << ": ";
-			std::cin >> name;
+			name = ft_cin();
 		}
 		else
 			break ;
 	}
 }
+
 
 void	parse_phone(std::string phone)
 {
@@ -107,8 +107,6 @@ void	parse_phone(std::string phone)
 		if(phone.empty()  || isdigit(phone[0]) == 0 || phone.length() != 10)
 		{
 			std::cout << "Phone is invalid" << std::endl;
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			if(std::cin.fail() )
 			{
 				std::cout << "Invalid command" << std::endl;
@@ -117,7 +115,7 @@ void	parse_phone(std::string phone)
 				continue ;
 			}
 			std::cout << "Enter phone: ";
-			std::cin >> phone;
+			phone = ft_cin();
 			break;
 		}
 		else
@@ -157,9 +155,10 @@ public:
     }
 }
 
+
 	void print_name()
 	{
-	 int columnWidth = 5;
+	 int columnWidth = 6;
     int maxChars = 10; // Maximum characters to display
 
     // Print header row
@@ -194,12 +193,14 @@ public:
     } 
 	else 
 	{
-		 int columnWidth = 20;
-         std::cout << std::left << std::setw(columnWidth) << "Name:" << _contact[index].get_name() << std::endl;
-    std::cout << std::left << std::setw(columnWidth) << "Surname:" << _contact[index].get_surname() << std::endl;
-    std::cout << std::left << std::setw(columnWidth) << "Nickname:" << _contact[index].get_nickname() << std::endl;
-    std::cout << std::left << std::setw(columnWidth) << "Phone:" << _contact[index].get_phone() << std::endl;
-    std::cout << std::left << std::setw(columnWidth) << "Darkest secret:" << _contact[index].get_darkest_secret() << " |||| " << std::endl;
+		 int columnWidth = 5;
+        std::cout << std::left << std::setw(columnWidth) << "Name:" << _contact[index].get_name() << std::endl;
+    	std::cout << std::left << std::setw(columnWidth) << "Surname:" << _contact[index].get_surname() << std::endl;
+    	std::cout << std::left << std::setw(columnWidth) << "Nickname:" << _contact[index].get_nickname() << std::endl;
+    	std::cout << std::left << std::setw(columnWidth) << "Phone:" << _contact[index].get_phone() << std::endl;
+    	std::cout << std::left << std::setw(columnWidth) << "Darkest secret:" << _contact[index].get_darkest_secret()<< std::endl;
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         break;
     }
 }		
@@ -210,34 +211,41 @@ void phonebook::set_contact_count(int contact_count)
 {
 	this->_contact_count = contact_count;
 }
-void phonebook::prompt_the_user()
-{
-	
-	std::string name;
+std::string ft_cin() {
+    std::string str;
+    std::getline(std::cin, str); 
+
+    return str;
+}
+
+
+void phonebook::prompt_the_user() {
+    std::string name;
     std::string surname;
     std::string nickname;
     std::string phone;
     std::string darkest_secret;
+    
     std::cout << "Enter name: ";
-        std::cin >> name;
-		parse_name(name,"name");
-        std::cout << "Enter surname: ";
-        std::cin >> surname;
-		parse_name(surname,"surname");
-        std::cout << "Enter nickname: ";
-        std::cin >> nickname;
-		parse_name(nickname,"nickname");
-        std::cout << "Enter phone: ";
-        std::cin >> phone;
-		parse_phone(phone);
-        std::cout << "Enter darkest_secret: ";
-        std::cin >> darkest_secret;
-		parse_name(darkest_secret,"darkest_secret");
-        _contact[_contact_count].set_name(name);
-        _contact[_contact_count].set_surname(surname);
-        _contact[_contact_count].set_nickname(nickname);
-        _contact[_contact_count].set_phone(phone);
-        _contact[_contact_count].set_darkest_secret(darkest_secret);
+    name = ft_cin();
+	parse_name(name, "name");
+    std::cout << "Enter surname: ";
+    surname = ft_cin();   
+	parse_name(surname, "surname");
+    std::cout << "Enter nickname: ";
+    nickname = ft_cin();
+	parse_name(nickname, "nickname");
+    std::cout << "Enter phone: ";
+    phone = ft_cin();
+	parse_phone(phone);
+    std::cout << "Enter darkest_secret: ";
+    darkest_secret = ft_cin();
+	parse_name(darkest_secret, "darkest_secret");
+    _contact[_contact_count].set_name(name);
+    _contact[_contact_count].set_surname(surname);
+    _contact[_contact_count].set_nickname(nickname);
+    _contact[_contact_count].set_phone(phone);
+    _contact[_contact_count].set_darkest_secret(darkest_secret);
 }
 
 int main()
@@ -250,12 +258,12 @@ int main()
 		std::cin.clear();
 		std::cout << "Enter command: ";
 		std::string command;
-		std::cin >> command;
+		command = ft_cin();
 		if(std::cin.fail())
 		{
 			std::cout << "Invalid command" << std::endl;
-			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cin.clear();
 			continue ;
 		}
 		if(command == "ADD")
