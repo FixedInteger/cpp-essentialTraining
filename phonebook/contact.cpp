@@ -1,19 +1,4 @@
-#include <iostream>
-#include <string>
-
-class contact{
-    std::string _name;
-    std::string _surname;
-    std::string _nickname;
-    std::string _phone;
-    std::string _darkest_secret;
-public:
-    void set_name(std::string name);
-    void set_surname(std::string surname);
-    void set_nickname(std::string nickname);
-    void set_phone(std::string phone);
-    void set_darkest_secret(std::string darkest_secret);
-};
+#include "contact.hpp"
 
 void contact::set_name(std::string name)
 {
@@ -82,10 +67,4 @@ void phonebook::add_contact()
     _contact[get_contact_count()].set_darkest_secret(darkest_secret);
     
 }
-int main()
-{
-    phonebook phonebook;
-    phonebook.add_contact();
 
-    return 0;
-}
