@@ -98,26 +98,51 @@ std::string parse_command(std::string command)
 }
 
 
-int main()
-{
+#include <iostream>
+#include <string>
 
-	phonebook phonebook;
-	phonebook.set_contact_count(0);
-	while(true)
-	{
-		std::cout << "Enter command: ";
-		std::string command;
-		command = ft_cin();
-		command = parse_command(command);
-		if(command == "ADD")
-			phonebook.add_contacta();
-		if(command == "SEARCH")
-			phonebook.print_name();
-		if(command == "EXIT")
-			break ;
-	}
-	return 0;
+int main() {
+    phonebook phonebook;
+    phonebook.set_contact_count(0);
+
+    while (true) {
+        std::string command;
+        std::cout << "Enter command: ";
+
+        if (!std::getline(std::cin, command)) {
+            if (std::cin.eof()) {
+                // Clear the EOF state
+                std::cin.clear();
+                // Clear any remaining input in the stream
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "End of input. Please continue entering commands." << std::endl;
+
+
+				break;
+            } else {
+                std::cerr << "An error occurred while reading input. Exiting." << std::endl;
+                break;
+            }
+        } else {
+            command = parse_command(command);
+
+            if (command == "ADD")
+                phonebook.add_contacta();
+            if (command == "SEARCH")
+                phonebook.print_name();
+            if (command == "EXIT")
+                break;
+        }
+    }
+
+    return 0;
 }
+
+
+
+
+
+
 
 
 

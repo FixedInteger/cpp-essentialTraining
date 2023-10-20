@@ -72,6 +72,8 @@ std::string truncateString(const std::string& input, int maxChars)
 }
 std::string ft_cin() {
     std::string str;
-    std::getline(std::cin, str); 
+    std::getline(std::cin, str);
+	if(std::cin.eof())
+		return "exit";
     return str;
 }
