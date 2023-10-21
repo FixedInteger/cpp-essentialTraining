@@ -42,25 +42,25 @@ int isalpha_s(std::string str){
 			std::cout << "Enter " << parameter << ": ";
 			name = ft_cin();
 		}
-		
+
 		if(isalpha_s(name) == 1 && !name.empty())
 			return name;
 	}
  }
 
 
-void	parse_phone(std::string phone)
+std::string	parse_phone(std::string phone)
 {
 	while(1)
 	{
-		if( check_isdigi(phone) == 0 || phone.empty() )
+		if(!check_isdigi(phone) || phone.empty() || phone.length() > 10)
 		{
-			std::cout << "phone is invalid" << std::endl;
+			std::cout << "Phone is invalid" << std::endl;
 			std::cout << "Enter phone: ";
 			phone = ft_cin();
 		}
-		if(check_isdigi(phone) == 1)
-			break;
+		if(check_isdigi(phone) && !phone.empty() && phone.length() <= 10)
+			return phone;
 	}
 }
 std::string truncateString(const std::string& input, int maxChars)

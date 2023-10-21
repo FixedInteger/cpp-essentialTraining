@@ -1,48 +1,48 @@
 #include "contact.hpp"
 
-void contact::set_name(std::string name)
+void Contact::set_name(std::string name)
 {
    this->_name = name;
 }
-void contact::set_surname(std::string surname)
+void Contact::set_surname(std::string surname)
 {
    this->_surname = surname;
 }
-void contact::set_nickname(std::string nickname)
+void Contact::set_nickname(std::string nickname)
 {
    this->_nickname = nickname;
 }
-void contact::set_phone(std::string phone)
+void Contact::set_phone(std::string phone)
 {
    this->_phone = phone;
 }
-void contact::set_darkest_secret(std::string darkest_secret)
+void Contact::set_darkest_secret(std::string darkest_secret)
 {
    this->_darkest_secret = darkest_secret;
 }
 
-class phonebook
+class PhoneBook
 {
     private:
-    contact _contact[8];
-    int _contact_count;
+    Contact _Contact[8];
+    int _Contact_count;
     public:
-    void set_contact_count(int contact_count);
-    int get_contact_count();
-    void add_contact();
-    void search_contact();
-    void print_contact();
+    void set_Contact_count(int Contact_count);
+    int get_Contact_count();
+    void add_Contact();
+    void search_Contact();
+    void print_Contact();
 };
 
-void phonebook::set_contact_count(int contact_count)
+void PhoneBook::set_Contact_count(int Contact_count)
 {
-    this->_contact_count = contact_count;
+    this->_Contact_count = Contact_count;
 }
-int phonebook::get_contact_count()
+int PhoneBook::get_Contact_count()
 {
-    return this->_contact_count;
+    return this->_Contact_count;
 }
-void phonebook::add_contact()
+void PhoneBook::add_Contact()
 {
     std::string name;
     std::string surname;
@@ -59,12 +59,12 @@ void phonebook::add_contact()
     std::cin >> phone;
     std::cout << "Enter darkest_secret: ";
     std::cin >> darkest_secret;
-    set_contact_count(get_contact_count() + 1);
-    _contact[get_contact_count()].set_name(name);
-    _contact[get_contact_count()].set_surname(surname);
-    _contact[get_contact_count()].set_nickname(nickname);
-    _contact[get_contact_count()].set_phone(phone);
-    _contact[get_contact_count()].set_darkest_secret(darkest_secret);
+    set_Contact_count(get_Contact_count() + 1);
+    _Contact[get_Contact_count()].set_name(name);
+    _Contact[get_Contact_count()].set_surname(surname);
+    _Contact[get_Contact_count()].set_nickname(nickname);
+    _Contact[get_Contact_count()].set_phone(phone);
+    _Contact[get_Contact_count()].set_darkest_secret(darkest_secret);
     
 }
 

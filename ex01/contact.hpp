@@ -1,5 +1,5 @@
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#ifndef Contact_HPP
+#define Contact_HPP
 
 #include <string>
 #include <iostream>
@@ -7,7 +7,7 @@
 #include <string>
 #include <algorithm>
 
-class contact{
+class Contact{
 	private:
 	std::string _name;
 	std::string _surname;

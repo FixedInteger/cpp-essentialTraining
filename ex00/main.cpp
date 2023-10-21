@@ -3,23 +3,26 @@
 #include <string>
  
 
-int check_parameters(int argc,char const *argv[])
+int main(int ac , char **av)
 {
-	for (int i = 1; i < argc; ++i)
+	if(ac == 1)
 	{
-		for( int j = 0; j < (int)strlen(argv[i]); j++)
-		std::cout << (char)toupper(argv[i][j]);
-	}
-	return 0;
-}
-
-int main(int argc, char const *argv[])
-{
-	if(argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+		return (0);
+	}
 	else
-		check_parameters(argc,argv);
-	return 0;
+	{
+		for (int i = 1; i < ac; i++)
+		{
+			std::string str = av[i];
+			for (int j = 0; j < (int)str.size(); j++)
+				str[j] = std::toupper(str[j]);
+			std::cout << str ;
+		}
+	}
+	std::cout << std::endl;
+	return (0);
+
 }
 
 	
