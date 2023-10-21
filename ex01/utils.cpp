@@ -42,6 +42,7 @@ int isalpha_s(std::string str){
 			std::cout << "Enter " << parameter << ": ";
 			name = ft_cin();
 		}
+		
 		if(isalpha_s(name) == 1 && !name.empty())
 			return name;
 	}
