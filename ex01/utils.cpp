@@ -14,7 +14,7 @@ int ask_index()
 	std::cout << "Enter index: ";
 	std ::string indexo ;
 	indexo = ft_cin();
-	if(!check_isdigi(indexo))
+	if(!check_isdigi(indexo) || indexo.empty() || indexo.length() > 1)
 		return -1;
 	int index = atoi(indexo.c_str());
 	if(std::cin.fail() || index > 7 || index < 0)
@@ -32,18 +32,18 @@ int isalpha_s(std::string str){
 	}
 	return 1;
 }
- void parse_name(std::string name , std:: string parameter)
+ std::string parse_name(std::string name , std:: string parameter)
  {
 	while(1)
 	{
-		if(isalpha_s(name) == 0 || name.empty())
+		if( isalpha_s(name) == 0 || name.empty() )
 		{
 			std::cout << parameter << " is invalid" << std::endl;
 			std::cout << "Enter " << parameter << ": ";
 			name = ft_cin();
 		}
-		else
-			break ;
+		if(isalpha_s(name) == 1 && !name.empty())
+			return name;
 	}
  }
 
@@ -52,15 +52,14 @@ void	parse_phone(std::string phone)
 {
 	while(1)
 	{
-		if(phone.empty() || check_isdigi(phone) == 0 || phone.length() > 11)
+		if( check_isdigi(phone) == 0 || phone.empty() )
 		{
 			std::cout << "phone is invalid" << std::endl;
 			std::cout << "Enter phone: ";
 			phone = ft_cin();
 		}
-		else
-			break ;
-
+		if(check_isdigi(phone) == 1)
+			break;
 	}
 }
 std::string truncateString(const std::string& input, int maxChars)
