@@ -38,6 +38,11 @@ void PhoneBook :: add_Contacta()
 }
 void PhoneBook:: print_name()
 {
+	if(_Contact_count == 0)
+	{
+		std::cout << "No contacts" << std::endl;
+		return;
+	}
 	
 	int columnWidth = 15;
 	int maxChars = 10;// Increased to ensure consistency
