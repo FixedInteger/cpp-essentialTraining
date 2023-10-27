@@ -6,23 +6,18 @@ void  PhoneBook::prompt_the_user2()
 	std::string nickname;
 	std::string phone;
 	std::string darkest_secret;
-	std::cout << "Enter name: ";
-	name = parse_name(ft_cin(), "name");
-	std::cout << "Enter surname: ";
-	surname = parse_name(ft_cin(), "surname");
-	std::cout << "Enter nickname: ";
-	nickname = parse_name(ft_cin(), "nickname");
-	std::cout << "Enter phone: ";
-	phone = parse_phone(ft_cin());
-	std::cout << "Enter darkest_secret: ";
-	darkest_secret = parse_name(ft_cin(), "darkest_secret");
+	name = parse_name("name");
+	surname = parse_name( "surname");
+	nickname = parse_name("nickname");
+	phone = parse_phone("phone");
+	darkest_secret = parse_name("darkest_secret");
 	_Contact[oldest_Contact].set_name(name);
 	_Contact[oldest_Contact].set_surname(surname);
 	_Contact[oldest_Contact].set_nickname(nickname);
 	_Contact[oldest_Contact].set_phone(phone);
 	_Contact[oldest_Contact].set_darkest_secret(darkest_secret);
 		oldest_Contact++;
-		if (oldest_Contact == 8)
+		if (oldest_Contact == 7)
 			oldest_Contact = 0;
 	
 }
@@ -84,16 +79,11 @@ void PhoneBook::prompt_the_user()
 	std::string nickname;
 	std::string phone;
 	std::string darkest_secret;
-	std::cout << "Enter name: ";
-	name = parse_name(ft_cin(), "name");
-	std::cout << "Enter surname: ";
-	surname = parse_name(ft_cin(), "surname");
-	std::cout << "Enter nickname: ";
-	nickname = parse_name(ft_cin(), "nickname");
-	std::cout << "Enter phone: ";
-	phone = parse_phone(ft_cin());
-	std::cout << "Enter darkest_secret: ";
-	darkest_secret = parse_name(ft_cin(), "darkest_secret");
+	name = parse_name("name");
+	surname = parse_name( "surname");
+	nickname = parse_name("nickname");
+	phone = parse_phone("phone");
+	darkest_secret = parse_name("darkest_secret");
 	_Contact[_Contact_count].set_name(name);
 	_Contact[_Contact_count].set_surname(surname);
 	_Contact[_Contact_count].set_nickname(nickname);

@@ -17,10 +17,11 @@ public:
 };
 int check_isdigi(std::string digit);
 int ask_index();
-int isalpha_s(std::string str);
-std::string parse_name(std::string name , std:: string parameter);
-std::string parse_phone(std::string phone);
+std::string parse_name(std::string parameter);
+bool is_alpha_and_space(std::string& str);
+std::string parse_phone(const std::string& parameter);
 std::string truncateString(const std::string& input, int maxChars);
 std::string ft_cin() ;
+
 
 #endif // 

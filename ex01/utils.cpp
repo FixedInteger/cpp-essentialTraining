@@ -21,47 +21,49 @@ int ask_index()
 		return -1;
 	return index;
 }
-int isalpha_s(std::string str){
 
-	for(int i = 0; i < (int )str.length(); i++)
-	{
-		while(isspace(str[i]))
-			i++;
-		if(!isalpha(str[i]) && !isspace(str[i]))
-			return 0;
-	}
-	return 1;
+bool is_alpha_and_space(std::string& str) {
+    for (size_t i = 0; i < str.length(); i++) {
+        if (!(isalpha(str[i]) || isspace(str[i]))) {
+            return false;
+        }
+    }
+    return true;
 }
- std::string parse_name(std::string name , std:: string parameter)
- {
-	while(1)
-	{
-		if( isalpha_s(name) == 0 || name.empty() )
-		{
-			std::cout << parameter << " is invalid" << std::endl;
-			std::cout << "Enter " << parameter << ": ";
-			name = ft_cin();
-		}
 
-		if(isalpha_s(name) == 1 && !name.empty())
-			return name;
-	}
- }
+std::string parse_name(std::string parameter) {
+    std::string name;
+    while (true) {
+        std::cout << "Enter " << parameter << ": ";
+		name = ft_cin();
+        if (is_alpha_and_space(name) && !name.empty()) 
+            return name; 
+		else
+            std::cout << parameter << " is invalid. Please enter only alphabetic characters and spaces." << std::endl;
+    }
+}
+ 
 
+bool check_isdigit(const std::string& str) {
+    for (size_t i = 0; i < str.length(); i++) {
+        if (!isdigit(str[i])) {
+            return false;
+        }
+    }
+    return true;
+}
 
-std::string	parse_phone(std::string phone)
-{
-	while(1)
-	{
-		if(!check_isdigi(phone) || phone.empty() || phone.length() > 10)
-		{
-			std::cout << "Phone is invalid" << std::endl;
-			std::cout << "Enter phone: ";
-			phone = ft_cin();
-		}
-		if(check_isdigi(phone) && !phone.empty() && phone.length() <= 10)
-			return phone;
-	}
+std::string parse_phone(const std::string& parameter) {
+    std::string phone;
+    while (true) {
+        std::cout << "Enter " << parameter << ": ";
+        phone = ft_cin();
+        if (check_isdigit(phone) && !phone.empty() && phone.length() <= 10) {
+            return phone;
+        } else {
+            std::cout << parameter << " is invalid. Please enter only digits, and the length should not exceed 10 characters." << std::endl;
+        }
+    }
 }
 std::string truncateString(const std::string& input, int maxChars)
 {
@@ -74,6 +76,6 @@ std::string ft_cin() {
     std::string str;
     std::getline(std::cin, str);
 	if(std::cin.eof())
-		return "exit";
+		exit(0);
     return str;
 }

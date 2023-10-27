@@ -27,6 +27,5 @@ public:
 	std::string get_nickname() {return _nickname;}
 	std::string get_phone() {return _phone;}
 	std::string get_darkest_secret() {return _darkest_secret;}
-
 };
 #endif
