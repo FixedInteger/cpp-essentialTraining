@@ -41,16 +41,16 @@ void PhoneBook:: print_name()
 	
 	int columnWidth = 15;
 	int maxChars = 10;// Increased to ensure consistency
-	std::cout << std::left << std::setw(columnWidth) << "--------------------------------------------------------------" << std::endl;
-	std::cout << std::left << std::setw(columnWidth) << "|Index         |   First Name   |   Last Name    |  Nickname |" << std::endl;
-	std::cout << std::left << std::setw(columnWidth) << "--------------------------------------------------------------" << std::endl;
+	std::cout << std::right << std::setw(columnWidth) << "--------------------------------------------------------------" << std::endl;
+	std::cout << std::right << std::setw(columnWidth) << "|Index         |   First Name   |   Last Name    |   Nickname  |" << std::endl;
+	std::cout << std::right << std::setw(columnWidth) << "--------------------------------------------------------------" << std::endl;
 
 	for (int i = 0; i < _Contact_count; i++) 
 	{
-		std::cout << std::left << std::setw(columnWidth) << i;
-		std::cout << std::left << "| " << std::setw(columnWidth) << truncateString(_Contact[i].get_name(), maxChars);
-		std::cout << std::left << "| " << std::setw(columnWidth) << truncateString(_Contact[i].get_surname(), maxChars);
-		std::cout << std::left << "| " << std::setw(columnWidth) << truncateString(_Contact[i].get_nickname(), maxChars)<< std::endl;
+		std::cout << std::right << std::setw(columnWidth) << i;
+		std::cout << std::right << "| " << std::setw(columnWidth) << truncateString(_Contact[i].get_name(), maxChars);
+		std::cout << std::right << "| " << std::setw(columnWidth) << truncateString(_Contact[i].get_surname(), maxChars);
+		std::cout << std::right << "| " << std::setw(12) << truncateString(_Contact[i].get_nickname(), maxChars)<< std::endl;
 	}
 
 
@@ -93,19 +93,6 @@ void PhoneBook::prompt_the_user()
 }
 
 
-std::string parse_command(std::string command) 
-{
-	int start = 0;
-	while (start < (int)command.size() && std::isspace(command[start]))
-		start++;
-	  int end = command.size();
-	while (end > start && std::isspace(command[end - 1]))
-		end--;
-	if (start < end) 
-		return command.substr(start, end - start);
-	else 
-		return "";
-}
 
 
 #include <iostream>
@@ -118,7 +105,6 @@ int main() {
 		std::string command;
 		std::cout << "Enter command: ";
 		command = ft_cin();
-		command = parse_command(command);
 		if(std::cin.eof())
 			break;
 		if (command == "ADD")
