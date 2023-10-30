@@ -41,16 +41,16 @@ void PhoneBook:: print_name()
 	
 	int columnWidth = 15;
 	int maxChars = 10;// Increased to ensure consistency
-	std::cout << std::right << std::setw(columnWidth) << "--------------------------------------------------------------" << std::endl;
-	std::cout << std::right << std::setw(columnWidth) << "|Index         |   First Name   |   Last Name    |   Nickname  |" << std::endl;
-	std::cout << std::right << std::setw(columnWidth) << "--------------------------------------------------------------" << std::endl;
+	std::cout <<  std::setw(columnWidth) << "--------------------------------------------------------------" << std::endl;
+	std::cout <<  std::setw(columnWidth) << "|Index         |   First Name   |   Last Name    |   Nickname  |" << std::endl;
+	std::cout <<  std::setw(columnWidth) << "--------------------------------------------------------------" << std::endl;
 
 	for (int i = 0; i < _Contact_count; i++) 
 	{
-		std::cout << std::right << std::setw(columnWidth) << i;
-		std::cout << std::right << "| " << std::setw(columnWidth) << truncateString(_Contact[i].get_name(), maxChars);
-		std::cout << std::right << "| " << std::setw(columnWidth) << truncateString(_Contact[i].get_surname(), maxChars);
-		std::cout << std::right << "| " << std::setw(12) << truncateString(_Contact[i].get_nickname(), maxChars)<< std::endl;
+		std::cout <<  std::setw(columnWidth) << i;
+		std::cout <<  "| " << std::setw(columnWidth) << truncateString(_Contact[i].get_name(), maxChars);
+		std::cout <<  "| " << std::setw(columnWidth) << truncateString(_Contact[i].get_surname(), maxChars);
+		std::cout <<  "| " << std::setw(12) << truncateString(_Contact[i].get_nickname(), maxChars)<< std::endl;
 	}
 
 
@@ -66,11 +66,11 @@ void PhoneBook:: print_name()
 			break;
 	} 
 		 columnWidth = 5;
-		std::cout << std::left << std::setw(columnWidth) << "Name:     " << _Contact[index].get_name() << std::endl;
-		std::cout << std::left << std::setw(columnWidth) << "Surname:    " << _Contact[index].get_surname() << std::endl;
-		std::cout << std::left << std::setw(columnWidth) << "Nickname:   " << _Contact[index].get_nickname() << std::endl;
-		std::cout << std::left << std::setw(columnWidth) << "Phone:    " << _Contact[index].get_phone() << std::endl;
-		std::cout << std::left << std::setw(columnWidth) << "Darkest secret:  " << _Contact[index].get_darkest_secret()<< std::endl;	
+		std::cout << std::setw(columnWidth) << "Name:     " << _Contact[index].get_name() << std::endl;
+		std::cout << std::setw(columnWidth) << "Surname:    " << _Contact[index].get_surname() << std::endl;
+		std::cout << std::setw(columnWidth) << "Nickname:   " << _Contact[index].get_nickname() << std::endl;
+		std::cout << std::setw(columnWidth) << "Phone:    " << _Contact[index].get_phone() << std::endl;
+		std::cout << std::setw(columnWidth) << "Darkest secret:  " << _Contact[index].get_darkest_secret()<< std::endl;	
 }
 void PhoneBook::prompt_the_user() 
 {
