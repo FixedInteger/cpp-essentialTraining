@@ -22,6 +22,4 @@ bool is_alpha_and_space(std::string& str);
 std::string parse_phone(const std::string& parameter);
 std::string truncateString(const std::string& input, int maxChars);
 std::string ft_cin() ;
-
-
 #endif // 

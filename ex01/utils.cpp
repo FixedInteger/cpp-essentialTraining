@@ -79,3 +79,11 @@ std::string ft_cin() {
 		exit(0);
     return str;
 }
+void PhoneBook::set_Contact_count(int Contact_count)
+{
+    this->_Contact_count = Contact_count;
+}
+int PhoneBook::get_Contact_count()
+{
+    return this->_Contact_count;
+}

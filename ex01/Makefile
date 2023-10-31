@@ -3,7 +3,6 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 SRC =  contact.cpp phonebook.cpp utils.cpp
 
-# Path: phonebook/Makefile
 OBJ = $(SRC:.cpp=.o)
 
 
@@ -18,6 +17,6 @@ $(NAME): $(OBJ)
 fclean: clean
 	rm -f $(NAME)
 
-
+re: fclean all
 clean:
 	rm -f $(OBJ)

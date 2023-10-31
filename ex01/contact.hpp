@@ -4,8 +4,7 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
-#include <string>
-#include <algorithm>
+
 
 class Contact{
 	private:
@@ -22,10 +21,10 @@ public:
 	void set_phone(std::string phone);
 	void set_darkest_secret(std::string darkest_secret);
 	//getters prototypes
-	std::string get_name() {return _name;}
-	std::string get_surname() {return _surname;}
-	std::string get_nickname() {return _nickname;}
-	std::string get_phone() {return _phone;}
-	std::string get_darkest_secret() {return _darkest_secret;}
+	std::string get_name() ;
+	std::string get_surname(); 
+	std::string get_nickname();
+	std::string get_phone() ;
+	std::string get_darkest_secret() ;
 };
 #endif
